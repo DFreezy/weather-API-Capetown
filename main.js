@@ -46,20 +46,22 @@ fetch(apiUrl)
     console.error("There was an error fetching the weather data:", error);
   });
    
-let isDark = true; // Initialize a boolean variable to keep track of the theme state
-
-// Get the button element by its ID and add an event listener for the 'click' event
-document.getElementById("theme-toggle-button").addEventListener('click', function() {
-  // Check if the current theme is dark
-  if (isDark) {
-    // Switch to light mode
-    document.body.style.backgroundColor = "#ffffff"; // Set the background color to white
-    document.getElementById('topBar').style.color = "black"; // Set the text color of the top bar to black
-    isDark = false; // Update the theme state to light
-  } else {
-    // Switch to dark mode
-    document.body.style.backgroundColor = "black"; // Set the background color to black
-    document.getElementById('topBar').style.color = "#ffffff"; // Set the text color of the top bar to white
-    isDark = true; // Update the theme state to dark
-  }
-});
+  document.getElementById("theme-toggle-button").addEventListener('click', function() {
+    // Check if the current theme is dark
+    if (isDark) {
+      // Switch to light mode
+      document.body.style.backgroundColor = "#ffffff"; // Set the background color to white
+      document.getElementById('topBar').style.color = "black"; // Set the text color of the top bar to black
+      document.getElementById('app').style.color = 'black';
+      document.getElementById('app').style.backgroundColor = '#ffffff';
+      isDark = false; // Update the theme state to light
+    } else {
+      // Switch to dark mode
+      document.body.style.backgroundColor = "black"; // Set the background color to black
+      document.getElementById('topBar').style.color = "#ffffff"; // Set the text color of the top bar to white
+      document.getElementById('app').style.color = '#ffffff';
+      document.getElementById('app').style.backgroundColor = 'black';
+      isDark = true; // Update the theme state to dark
+    }
+  });
+  
