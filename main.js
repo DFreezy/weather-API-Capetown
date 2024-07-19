@@ -1,13 +1,13 @@
 // Import the CSS file for styling
 import './style.css';
 
-// Define the API URL with parameters to get daily weather forecasts
+// Here I declared a variable with the api url inside
 const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=-33.9258&longitude=18.4232&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max&timezone=auto";
 
 // Fetch the weather data from the API
 fetch(apiUrl)
   .then(response => {
-    // Check if the response status is OK (status code 200-299)
+    // Check if the response status is OK
     if (!response.ok) {
       // Throw an error if the response is not OK
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -23,7 +23,7 @@ fetch(apiUrl)
     const dailyPrecipitation = data.daily.precipitation_sum; // Array of total precipitation for each day
     const dailyMaxWindSpeeds = data.daily.windspeed_10m_max; // Array of max wind speeds for each day
 
-    // Get the element to display the daily weather data
+    // Here I am getting the element to display the daily weather data
     const dailyWeatherList = document.getElementById('daily-weather');
     dailyWeatherList.innerHTML = ''; // Clear any existing data in the list
 
@@ -46,22 +46,24 @@ fetch(apiUrl)
     console.error("There was an error fetching the weather data:", error);
   });
    
-  document.getElementById("theme-toggle-button").addEventListener('click', function() {
-    // Check if the current theme is dark
-    if (isDark) {
-      // Switch to light mode
-      document.body.style.backgroundColor = "#ffffff"; // Set the background color to white
-      document.getElementById('topBar').style.color = "black"; // Set the text color of the top bar to black
-      document.getElementById('app').style.color = 'black';
-      document.getElementById('app').style.backgroundColor = '#ffffff';
-      isDark = false; // Update the theme state to light
-    } else {
-      // Switch to dark mode
-      document.body.style.backgroundColor = "black"; // Set the background color to black
-      document.getElementById('topBar').style.color = "#ffffff"; // Set the text color of the top bar to white
-      document.getElementById('app').style.color = '#ffffff';
-      document.getElementById('app').style.backgroundColor = 'black';
-      isDark = true; // Update the theme state to dark
-    }
-  });
-  
+let isDark = true; // Initialize a boolean variable to keep track of the theme state
+
+// Get the button element by its ID and add an event listener for the 'click' event
+document.getElementById("theme-toggle-button").addEventListener('click', function() {
+  // Check if the current theme is dark
+  if (isDark) {
+    // Switch to light mode
+    document.body.style.backgroundColor = "#ffffff"; // Set the background color to white
+    document.getElementById('topBar').style.color = "black"; // Set the text color of the top bar to black
+    document.getElementById('app').style.color = 'black';
+    document.getElementById('app').style.backgroundColor = '#ffffff';
+    isDark = false; // Update the theme state to light
+  } else {
+    // Switch to dark mode
+    document.body.style.backgroundColor = "black"; // Set the background color to black
+    document.getElementById('topBar').style.color = "#ffffff"; // Set the text color of the top bar to white
+    document.getElementById('app').style.color = '#ffffff';
+    document.getElementById('app').style.backgroundColor = 'black';
+    isDark = true; // Update the theme state to dark
+  }
+});
