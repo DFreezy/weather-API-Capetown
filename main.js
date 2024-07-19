@@ -107,3 +107,4 @@ document.getElementById("theme-toggle-button").addEventListener('click', functio
     isDark = true; // Update the theme state to dark
   }
 });
+
